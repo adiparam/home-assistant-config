@@ -1,0 +1,165 @@
+homeassistant:
+  name: Home
+  latitude: !secret loc_lat
+  longitude: !secret loc_long
+  elevation: 37
+  unit_system: metric
+  temperature_unit: C
+  time_zone: America/New_York
+
+adtpulse:
+  username: !secret adt_pulse_username
+  password: !secret adt_pulse_password
+
+amcrest:
+  - host: 192.168.86.215
+    name: living room
+    username: !secret amcrest_username
+    password: !secret amcrest_password
+    binary_sensors:
+      - motion_detected
+      - online
+  - host: 192.168.86.48
+    name: garage
+    username: !secret amcrest_username
+    password: !secret amcrest_password
+    binary_sensors:
+      - motion_detected
+      - online
+
+# Enables automation UI
+automation: !include_dir_list automations/
+
+binary_sensor:
+  # Requires skybell to be setup below
+  - platform: skybell  
+    monitored_conditions:
+      - button
+      - motion
+
+# Cameras
+camera:
+  - platform: skybell
+    monitored_conditions:
+    - avatar
+    - activity
+    activity_name: "Last Activity"
+  - platform: ffmpeg
+    name: "Kitchen camera"
+    input: -rtsp_transport udp -i !secret wyze_cam_url
+  - platform: nwsradar
+    station: OKX
+    type: N0R
+ 
+# Enables configuration UI
+config:
+ 
+# MyQ Garage 
+cover:
+  - platform: myq
+    username: !secret myq_username
+    password: !secret myq_password
+
+# Discover some devices automatically
+discovery:
+
+# Enables the frontend
+frontend:
+  themes: !include_dir_named themes
+
+# Google Domains
+google_domains:
+  domain: !secret my_google_domain
+  username: !secret google_domains_username
+  password: !secret google_domains_password
+
+# Enables support for tracking state changes over time.
+history:
+
+http:
+  base_url: !secret my_base_url
+  use_x_forwarded_for: true
+  trusted_proxies: 127.0.0.1
+
+# Philips Hue Lights
+light:
+  platform: hue
+  host: 192.168.86.46
+
+# View all events in a logbook
+logbook:
+
+# MQTTT
+mqtt:
+  broker: localhost
+  discovery: true
+  port: 1883
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+pi_hole:
+  host: localhost:82
+
+# Prometheus
+prometheus:
+
+# Enables scenes
+scene: !include_dir_list scenes/
+
+sensor:
+  # Weather Prediction
+  - platform: darksky
+    api_key: !secret darksky_key
+    units: uk2
+    monitored_conditions:
+      - summary
+      - icon
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - humidity
+      - pressure
+      - temperature
+      - apparent_temperature
+      - wind_speed
+      - wind_bearing
+
+  # Google Wifi
+  - platform: google_wifi
+    host: 192.168.86.1
+
+  # System monitor
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_free
+      - type: network_in
+        arg: eno1
+      - type: network_out
+        arg: eno1
+
+# Skybell
+skybell:
+  username: !secret skybell_username
+  password: !secret skybell_password
+
+# Track the sun
+sun:
+
+system_health:
+
+tesla:
+  username: !secret tesla_username
+  password: !secret tesla_password
+  scan_interval: 3600
+  
+# Checks for available updates
+updater:
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_key
+    mode: daily
+
+wemo:

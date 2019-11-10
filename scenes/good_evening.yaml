@@ -1,0 +1,32 @@
+name: Good Evening
+entities:
+  light.backyard_light:
+    state: 'on'
+  light.formal_living_room:
+    brightness: 99
+    state: 'on'
+    xy_color:
+    - 0.475
+    - 0.214
+  light.front_door:
+    brightness: 254
+    state: 'on'
+  light.guest_room:
+    brightness: 254
+    state: 'on'
+  # Standing lights.
+  light.hue_color_lamp_1:
+    brightness: 136
+    state: 'on'
+    xy_color:
+    - 0.671
+    - 0.324
+  light.hue_color_lamp_2:
+    brightness: 143
+    state: 'on'
+    xy_color:
+    - 0.203
+    - 0.61
+  light.patio:
+    brightness: 171
+    state: 'on'
