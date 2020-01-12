@@ -1,0 +1,8 @@
+name: Good Morning
+entities:
+  light.backyard_light:
+    state: 'off'
+  light.front_door:
+    state: 'off'
+  light.patio:
+    state: 'off'
