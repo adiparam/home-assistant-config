@@ -44,12 +44,12 @@ camera:
     - avatar
     - activity
     activity_name: "Last Activity"
-  - platform: ffmpeg
-    name: "Kitchen camera"
-    input: -rtsp_transport udp -i !secret wyze_cam_url
   - platform: nwsradar
     station: OKX
     type: N0R
+  - platform: local_file
+    name: Network Traffic
+    file_path: /home/homeassistant/.homeassistant/downloads/network.png
  
 # Enables configuration UI
 config:
@@ -88,6 +88,9 @@ light:
 
 # View all events in a logbook
 logbook:
+
+# Enable the mobile app
+mobile_app:
 
 # MQTTT
 mqtt:
@@ -138,6 +141,11 @@ sensor:
         arg: eno1
       - type: network_out
         arg: eno1
+  # Command Line
+  - platform: command_line
+    name: "Download Grafana"
+    command: sh /home/homeassistant/.homeassistant/bin/getgrafana.sh
+    scan_interval: 600
 
 # Skybell
 skybell:

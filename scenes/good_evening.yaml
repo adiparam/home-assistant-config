@@ -30,3 +30,7 @@ entities:
   light.patio:
     brightness: 171
     state: 'on'
+  switch.holiday_lights:
+    state: 'on'
+  switch.switch_4:
+    state: 'on'
