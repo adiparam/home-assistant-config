@@ -1,0 +1,23 @@
+name: Good Night
+entities:
+  light.backyard_light:
+    state: 'on'
+  light.formal_living_room:
+    state: 'off'
+  light.front_door:
+    brightness: 254
+    state: 'on'
+  light.guest_room:
+    state: 'off'
+  # Standing lights.
+  light.hue_color_lamp_1:
+    state: 'off'
+  light.hue_color_lamp_2:
+    state: 'off'
+  light.patio:
+    brightness: 171
+    state: 'on'
+  switch.holiday_lights:
+    state: 'off'
+  switch.switch_4:
+    state: 'off'
