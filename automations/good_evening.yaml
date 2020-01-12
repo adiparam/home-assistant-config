@@ -1,0 +1,7 @@
+alias: Good Evening
+trigger: 
+  - platform: sun
+    event: sunset
+action:
+   - service: scene.turn_on
+     entity_id: scene.good_evening
