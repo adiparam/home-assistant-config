@@ -7,10 +7,6 @@ homeassistant:
   temperature_unit: C
   time_zone: America/New_York
 
-adtpulse:
-  username: !secret adt_pulse_username
-  password: !secret adt_pulse_password
-
 amcrest:
   - host: 192.168.86.215
     name: living room
@@ -156,11 +152,6 @@ skybell:
 sun:
 
 system_health:
-
-tesla:
-  username: !secret tesla_username
-  password: !secret tesla_password
-  scan_interval: 3600
   
 # Checks for available updates
 updater:
